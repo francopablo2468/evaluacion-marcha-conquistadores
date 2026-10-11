@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criterios de selección</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #111;
+            background: #fff;
+        }
+
+        .tarjeta {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 24px 20px;
+            border: 1px solid #dedede;
+            border-radius: 16px;
+            background: #fff;
+        }
+
+        h2 {
+            margin: 0 0 30px;
+            font-size: 22px;
+            font-weight: 500;
+        }
+
+        .prueba {
+            margin-bottom: 30px;
+        }
+
+        .encabezado {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: #444;
+            font-size: 17px;
+        }
+
+        .valor {
+            color: #111;
+            font-size: 20px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        input[type="range"] {
+            display: block;
+            width: 100%;
+            height: 30px;
+            margin: 0;
+            appearance: none;
+            -webkit-appearance: none;
+            border-radius: 20px;
+            background: #f0f0f0;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 25px;
+            height: 25px;
+            border: 1px solid #e2e2e2;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 1px 3px #0001;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 23px;
+            height: 23px;
+            border: 1px solid #e2e2e2;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 1px 3px #0001;
+        }
+
+        .escala {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 12px;
+            padding: 0 8px;
+            font-size: 14px;
+        }
+
+        .resultado {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-top: 34px;
+            padding-top: 34px;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .etiqueta {
+            margin-bottom: 8px;
+            color: #666;
+            font-size: 16px;
+        }
+
+        .total {
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .estado-contenedor {
+            text-align: right;
+        }
+
+        .estado {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .seleccionado {
+            color: #197447;
+            background: #d9f2e3;
+        }
+
+        .consideracion {
+            color: #8a5b00;
+            background: #fff0c2;
+        }
+
+        .practica {
+            color: #a12d2d;
+            background: #f9dddd;
+        }
+
+        .sin-evaluar {
+            color: #555;
+            background: #eeeeee;
+        }
+
+        .subtitulo {
+            margin-top: 8px;
+            color: #777;
+            font-size: 14px;
+        }
+
+        .mensaje {
+            margin-top: 28px;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .botones {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fff;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #f5f5f5;
+        }
+
+        .nota {
+            margin-top: 20px;
+            color: #777;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 500px) {
+            .tarjeta {
+                padding: 20px 14px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .encabezado {
+                font-size: 15px;
+            }
+
+            .valor {
+                font-size: 18px;
+            }
+
+            .total {
+                font-size: 25px;
+            }
+
+            .mensaje {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="tarjeta">
+        <h2>Probá los criterios de selección</h2>
+
+        <div class="prueba">
+            <div class="encabezado">
+                <label for="individual">Prueba individual</label>
+                <span class="valor">
+                    <span id="valorIndividual">43</span>/52
+                </span>
+            </div>
+
+            <input
+                type="range"
+                id="individual"
+                min="0"
+                max="52"
+                value="43"
+            >
+
+            <div class="escala">
+                <span>0</span>
+                <span>26</span>
+                <span>52</span>
+            </div>
+        </div>
+
+        <div class="prueba">
+            <div class="encabezado">
+                <label for="grupal">Prueba grupal</label>
+                <span class="valor">
+                    <span id="valorGrupal">18</span>/20
+                </span>
+            </div>
+
+            <input
+                type="range"
+                id="grupal"
+                min="0"
+                max="20"
+                value="18"
+            >
+
+            <div class="escala">
+                <span>0</span>
+                <span>10</span>
+                <span>20</span>
+            </div>
+        </div>
+
+        <div class="resultado">
+            <div>
+                <div class="etiqueta">Puntaje total</div>
+                <div class="total">
+                    <span id="total">61</span>/72
+                </div>
+            </div>
+
+            <div class="estado-contenedor">
+                <span id="estado" class="estado seleccionado">
+                    Seleccionado
+                </span>
+                <div class="subtitulo">Resultado de evaluación</div>
+            </div>
+        </div>
+
+        <div id="mensaje" class="mensaje">
+            Cumple los tres mínimos propuestos.
+        </div>
+
+        <div class="botones">
+            <button type="button" id="reiniciar">Reiniciar puntajes</button>
+            <button type="button" id="imprimir">Imprimir resultado</button>
+        </div>
+
+        <p class="nota">
+            Criterios propuestos: mínimo de 39/52 en la prueba individual,
+            14/20 en la grupal y 61/72 en el total. Estos valores pueden
+            ajustarse según las necesidades del club.
+        </p>
+    </main>
+
+    <script>
+        const individual = document.getElementById("individual");
+        const grupal = document.getElementById("grupal");
+
+        const valorIndividual = document.getElementById("valorIndividual");
+        const valorGrupal = document.getElementById("valorGrupal");
+        const totalElemento = document.getElementById("total");
+
+        const estado = document.getElementById("estado");
+        const mensaje = document.getElementById("mensaje");
+
+        function actualizarResultado() {
+            const puntosIndividuales = Number(individual.value);
+            const puntosGrupales = Number(grupal.value);
+            const total = puntosIndividuales + puntosGrupales;
+
+            valorIndividual.textContent = puntosIndividuales;
+            valorGrupal.textContent = puntosGrupales;
+            totalElemento.textContent = total;
+
+            estado.className = "estado";
+
+            if (
+                puntosIndividuales >= 39 &&
+                puntosGrupales >= 14 &&
+                total >= 61
+            ) {
+                estado.textContent = "Seleccionado";
+                estado.classList.add("seleccionado");
+
+                mensaje.textContent =
+                    "Cumple los tres mínimos propuestos.";
+            } else if (total >= 51) {
+                estado.textContent = "En consideración";
+                estado.classList.add("consideracion");
+
+                if (total >= 61) {
+                    mensaje.textContent =
+                        "Tiene buen puntaje total, pero no cumple " +
+                        "todos los mínimos individuales y grupales.";
+                } else {
+                    mensaje.textContent =
+                        "Está cerca del mínimo de selección. " +
+                        "Se recomienda revisar sus puntos fuertes y mejorar.";
+                }
+            } else {
+                estado.textContent = "Requiere práctica";
+                estado.classList.add("practica");
+
+                mensaje.textContent =
+                    "Necesita mejorar su desempeño antes de cumplir " +
+                    "los criterios propuestos.";
+            }
+        }
+
+        individual.addEventListener("input", actualizarResultado);
+        grupal.addEventListener("input", actualizarResultado);
+
+        document.getElementById("reiniciar").addEventListener("click", () => {
+            individual.value = 0;
+            grupal.value = 0;
+            actualizarResultado();
+        });
+
+        document.getElementById("imprimir").addEventListener("click", () => {
+            window.print();
+        });
+
+        actualizarResultado();
+    </script>
+
+</body>
+</html>
