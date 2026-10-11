@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evaluación de Marcha | Conquistadores</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">CLUB DE CONQUISTADORES</p>
+      <h1>Evaluación de marcha</h1>
+      <p class="hero-text">Registro individual, evaluación grupal y selección del pelotón.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">ORGANIZACIÓN</p>
+          <h2>Datos de la evaluación</h2>
+        </div>
+      </div>
+      <div class="form-grid">
+        <label>Nombre del club<input id="clubName" placeholder="Ej. Aconcagua"></label>
+        <label>Fecha<input id="eventDate" type="date"></label>
+        <label>Evaluador/a<input id="evaluator" placeholder="Nombre del evaluador"></label>
+      </div>
+      <p class="small-note">Los datos se guardan automáticamente en este navegador. Para no perderlos, exportá una copia cuando termines.</p>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">PARTICIPANTES</p>
+          <h2>Lista de conquistadores</h2>
+        </div>
+        <span class="counter" id="participantCount">0 participantes</span>
+      </div>
+      <form id="addForm" class="add-form">
+        <label class="grow">Nombre y apellido<input id="participantName" required placeholder="Escribí el nombre completo"></label>
+        <button class="btn primary" type="submit">Agregar participante</button>
+      </form>
+      <div id="participantList" class="participant-list"></div>
+    </section>
+
+    <section class="panel" id="evaluationPanel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">PRUEBA 1</p>
+          <h2>Evaluación individual</h2>
+        </div>
+        <span class="score-pill" id="individualTotal">0 / 52</span>
+      </div>
+      <label class="select-label">Participante que vas a evaluar
+        <select id="participantSelect"><option value="">Primero agregá un participante</option></select>
+      </label>
+      <p class="legend"><b>Escala:</b> 2 = correcto · 1 = con errores · 0 = incorrecto o no ejecutado.</p>
+      <div id="individualSections"></div>
+      <label class="notes-label">Observaciones de la prueba individual<textarea id="individualNotes" rows="3" placeholder="Anotá los movimientos que debe practicar..."></textarea></label>
+      <div class="action-row">
+        <button class="btn secondary" id="clearIndividual" type="button">Limpiar puntajes individuales</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">PRUEBA 2</p>
+          <h2>Evaluación grupal</h2>
+        </div>
+        <span class="score-pill" id="groupTotal">0 / 20</span>
+      </div>
+      <p class="muted">Evaluá a cada participante mientras todo el grupo ejecuta la secuencia.</p>
+      <div id="groupCriteria"></div>
+      <label class="notes-label">Observaciones de la prueba grupal<textarea id="groupNotes" rows="3" placeholder="Sincronización, alineación, conversiones..."></textarea></label>
+      <div class="action-row">
+        <button class="btn secondary" id="clearGroup" type="button">Limpiar puntajes grupales</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">RESULTADOS</p>
+          <h2>Ranking del pelotón</h2>
+        </div>
+        <span class="counter" id="rankSummary">0 evaluados</span>
+      </div>
+      <p class="legend"><b>Puntaje total:</b> individual /52 + grupal /20 = máximo 72 puntos. El ranking se actualiza automáticamente.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>Participante</th><th>Individual</th><th>Grupal</th><th>Total</th><th>Selección</th><th>Acciones</th></tr></thead>
+          <tbody id="rankingBody"><tr><td colspan="7" class="empty">Agregá participantes para comenzar.</td></tr></tbody>
+        </table>
+      </div>
+      <div class="action-row wrap">
+        <button class="btn primary" id="printBtn" type="button">Imprimir resultados</button>
+        <button class="btn secondary" id="exportBtn" type="button">Exportar copia (JSON)</button>
+        <label class="btn secondary file-label">Importar copia<input id="importFile" type="file" accept=".json,application/json" hidden></label>
+        <button class="btn danger-outline" id="resetAll" type="button">Borrar toda la evaluación</button>
+      </div>
+    </section>
+
+    <footer>Evaluación de marcha y orden cerrado · Club de Conquistadores</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
